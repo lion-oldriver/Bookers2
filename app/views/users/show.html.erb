@@ -1,0 +1,9 @@
+<h1>Books</h1>
+
+<% @books.each do |book| %>
+<div>
+  <p>画像<%= image_tag('no_image.jpg') %></p>
+  <p>Title<%= book.title %></p>
+  <p>Opinion<%= book.body %></p>
+</div>
+<% end %>
