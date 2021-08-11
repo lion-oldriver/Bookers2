@@ -1,7 +1,30 @@
+<%# プロフィール　後でテンプレ化%>
+<h1>User Info</h1>
+<div>
+  <%= image_tag('no_image.jpg') %>
+  <p>name <%= @user.name %></p>
+  <p>introduction <%= @user.introduction %></p>
+</div>
+<%= link_to "profile_edit",edit_user_path(@user) %>
+
+<%# 新規登録　後でテンプレ化%>
+<h1>New Book</h1>
+<%= form_with model:@book,local:true do |f|  %>
+  <h3>Title</h3>
+  <%= f.text_field :title %>
+  <h3>Opinion</h3>
+  <%= f.text_area :body %>
+  <%= f.submit "Create Book" %>
+<% end %>
+
+
+
 <h1>Book detail</h1>
 <div>
   <p>画像<%= image_tag('no_image.jpg') %></p>
-  <p>Title<%= @book.title %></p>
+  <%= link_to book_path(@book) do %>
+    <p>Title<%= @book.title %></p>
+  <% end %>
   <p>Opinion<%= @book.body %></p>
 </div>
 
