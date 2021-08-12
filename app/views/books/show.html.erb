@@ -1,34 +1,35 @@
-<%# プロフィール　後でテンプレ化%>
-<h1>User Info</h1>
-<div>
-  <%= image_tag('no_image.jpg') %>
-  <p>name <%= @user.name %></p>
-  <p>introduction <%= @user.introduction %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render'users/list',user:@user,book:@books %>
+    </div>
+
+    <div class="col-lg-1"></div>
+
+    <div class="col-lg-8">
+      <h1>Book detail</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" , size:'50x50'%><br>
+              <%= link_to user_path(@user) do %>
+                <%= @user.name %>
+              <% end %>
+            </td>
+            <td>
+              <%= link_to book_path(@book) do %>
+                <%= @book.title %>
+              <% end %>
+            </td>
+            <td><%= @book.body %></td>
+            <% if @book.user == current_user %>
+              <td><%= link_to "Edit",edit_book_path(@book) %></td>
+              <td><%= link_to "Destroy",book_path(@book),method: :delete %></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<%= link_to "profile_edit",edit_user_path(@user) %>
-
-<%# 新規登録　後でテンプレ化%>
-<h1>New Book</h1>
-<%= form_with model:@book,local:true do |f|  %>
-  <h3>Title</h3>
-  <%= f.text_field :title %>
-  <h3>Opinion</h3>
-  <%= f.text_area :body %>
-  <%= f.submit "Create Book" %>
-<% end %>
-
-
-
-<h1>Book detail</h1>
-<div>
-  <p>画像<%= image_tag('no_image.jpg') %></p>
-  <%= link_to book_path(@book) do %>
-    <p>Title<%= @book.title %></p>
-  <% end %>
-  <p>Opinion<%= @book.body %></p>
-</div>
-
-<% if @book.user == current_user %>
-  <%= link_to "Edit",edit_book_path(@book) %>
-  <%= link_to "Destroy",book_path(@book),method: :delete %>
-<% end %>

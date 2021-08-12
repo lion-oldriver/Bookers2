@@ -1,28 +1,34 @@
-<%# プロフィール　後でテンプレ化%>
-<h1>User Info</h1>
-<div>
-  <%= image_tag('no_image.jpg') %>
-  <p>name <%= @user.name %></p>
-  <p>introduction <%= @user.introduction %></p>
-</div>
-<%= link_to "profile_edit",edit_user_path(@user) %>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-3">
+      <%= render'users/list',user:@user,book:@book %>
+    </div>
 
-<%# 新規登録　後でテンプレ化%>
-<h1>New Book</h1>
-<%= form_with model:@book,local:true do |f|  %>
-  <h3>Title</h3>
-  <%= f.text_field :title %>
-  <h3>Opinion</h3>
-  <%= f.text_area :body %>
-  <%= f.submit "Create Book" %>
-<% end %>
+    <div class="col-lg-1"></div>
 
-<% @books.each do |book| %>
-<div>
-  <p>画像<%= image_tag('no_image.jpg') %></p>
-  <%= link_to book_path(book) do %>
-    <p>Title<%= book.title %></p>
-  <% end %>
-  <p>Opinion<%= book.body %></p>
+    <div class="col-lg-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Opinion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |book| %>
+          <tr>
+            <td scope="row"><%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" , size:'50x50'%></td>
+            <td class="col-3">
+              <%= link_to book_path(book) do %>
+                <p><%= book.title %></p>
+              <% end %>
+            </td>
+            <td class="col-7"><%= book.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-<% end %>
