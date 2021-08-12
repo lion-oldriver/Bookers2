@@ -21,9 +21,11 @@
           <% @user.books.each do |book| %>
           <tr>
             <th scope="row"><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, format: 'jpeg', fallback: "no_image.jpg" , size:'50x50'%></th>
-            <%= link_to book_path(book) do %>
-            <td><%= book.title %></td>
-            <% end %>
+            <td>
+              <%= link_to book_path(book) do %>
+                <%= book.title %>
+              <% end %>
+            </td>
             <td><%= book.body %></td>
           </tr>
           <% end %>
