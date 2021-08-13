@@ -1,4 +1,16 @@
 <div class="container">
+  <% object = session[:error_message] %>
+  <% if !object.nil? %>
+    <div class="text-danger">
+      <h2><%= pluralize(object.count, "error") %> prohibited this obj from being saved:</h2>
+      <ul>
+      <% object.each do |message| %>
+          <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <% session[:error_message] = nil %>
   <div class="row">
     <div class="col-lg-3">
       <%= render'users/list',user:@user,book:@book %>
@@ -7,6 +19,7 @@
     <div class="col-lg-1"></div>
 
     <div class="col-lg-8">
+      <h2>Books</h2>
       <table class="table">
         <thead>
           <tr>

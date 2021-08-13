@@ -1,21 +1,30 @@
 <div class="container">
-  <div class="row justify-content-lg-center">
-    <div class="col-lg-5 mx-auto">
+  <div class="row">
+    <div class="col-lg-5 px-5 px-sm-0 mx-auto">
       <h1>Editing Book</h1>
+      <div class="text-danger">
+        <% if @book.errors.any? %>
+          <h3><%= pluralize(@book.errors.count,"error") %> prohibited this obj from being saved:</h3>
+          <ul>
+            <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        </div>
        <%= form_with model:@book,local:true do |f| %>
         <div class="form-group">
           <label for="Title">Title</label><br>
-          <%= f.text_field :title %>
-        </div>
+          <%= f.text_field :title, class:"form-control mb-3" %>
         <div class="form-group ">
-          <label for="Orinion" >Opinion</label><br>
-          <%= f.text_area :body %>
+          <label for="Opinion" >Opinion</label><br>
+          <%= f.text_area :body, class:"form-control"  %>
         </div>
          <%= f.submit "Update Book", class: 'btn btn-success'%>
       <% end %>
       <div class="d-flex flex-row mt-3">
         <%= link_to "Show",book_path(@book) %>
-        <p>|</p>
+        <p class="mx-1">|</p>
         <%= link_to "Back",books_path %>
       </div>
     </div>
