@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">image</th>
+      <th scope="col">name</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+    <tr>
+      <th scope="row" class="col-2"><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %></th>
+      <th class="col-2"><%= user.name %></th>
+      <th class="col-2">フォロー数: <%= user.followings.count %></th>
+      <th class="col-2">フォロワー数: <%= user.followers.count %></th>
+      <th class="col-2"><%= render'users/follow',user:user %></th>
+      <th><%= link_to "Show",user_path(user.id) %></th>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,14 +1,14 @@
 class SearchesController < ApplicationController
   def search
     @model = params["model"]
-    @content = params["content"]
     @method = params["method"]
-    @records = seach_for(@model, @content, @method)
+    @content = params["content"]
+    @records = search_for(@model, @content, @method)
   end
 
   private
-  def seach_for(model, cintent, method)
-    if model == 'User'
+  def search_for(model, content, method)
+    if model == 'user'
       if method == 'perfect'
         User.where(name: content)
       elsif method == 'forward_match'
@@ -18,7 +18,7 @@ class SearchesController < ApplicationController
       else
         User.where('name LIKE ?', '%'+content+'%')
       end
-    elsif model == 'Book'
+    elsif model == 'book'
       if method == 'perfect'
         Book.where(title: content)
       elsif method == 'forward_match'
