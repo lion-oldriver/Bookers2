@@ -10,7 +10,7 @@
       </td>
       <td class="col-8"><%= book_comment.comment %></td>
       <% if book_comment.user == current_user %>
-        <td class="col-2" id="commet_<%= comment.id %>">
+        <td class="col-2">
           <%= link_to "Destroy",book_book_comment_path(book_comment.book,book_comment),method: :delete,remote: true, class: 'btn btn-danger' %>
         </td>
       <% end %>

@@ -1,1 +1,1 @@
-$("#comment_<%= @comment.id %>").remove();
+$("#comment_index").html("<%= j(render 'book_comments/comment', book: @book) %>");

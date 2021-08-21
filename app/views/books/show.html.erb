@@ -33,8 +33,8 @@
           </tr>
         </tbody>
       </table>
-      <%= render "book_comments/comment",book:@book %>
-      <%= render "book_comments/form",book:@book,book_comment:@book_comment %>
+      <div id='comment_index'><%= render "book_comments/comment",book:@book %></div>
+      <div id='comment_form'><%= render "book_comments/form",book:@book,book_comment:@book_comment %></div>
     </div>
   </div>
 </div>
