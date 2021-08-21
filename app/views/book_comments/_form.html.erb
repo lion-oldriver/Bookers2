@@ -1,6 +1,0 @@
-<div class="new-comment">
-  <%= form_with model:[book,book_comment],remote: true do |f| %>
-    <%= f.text_area :comment,class:"form-control" %>
-    <%= f.submit "送信" %>
-  <% end %>
-</div>
