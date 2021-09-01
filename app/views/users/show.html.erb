@@ -15,6 +15,7 @@
             <th scope="col">Title</th>
             <th scope="col">Opinion</th>
             <th scope="col">comment</th>
+            <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
@@ -32,6 +33,9 @@
             </td>
             <td><%= book.body %></td>
             <td>コメント数: <%= book.book_comments.count %></td>
+            <td id="star-rate-<%= book.id %>">
+              <%= render 'books/star',book:book %>
+            </td>
           </tr>
           <% end %>
         </tbody>
