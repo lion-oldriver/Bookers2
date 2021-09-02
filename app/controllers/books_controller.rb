@@ -13,7 +13,13 @@ class BooksController < ApplicationController
   def index
     @user = User.find(current_user.id)
     @book = Book.new
-    @books = Book.all
+    if params[:sort_update] == 'latest'
+      @books = Book.latest
+    elsif params[:sort_update] == 'rated'
+      @books = Book.rated
+    else
+      @books = Book.all
+    end
   end
 
   def show

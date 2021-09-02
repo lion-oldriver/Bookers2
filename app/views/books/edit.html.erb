@@ -20,6 +20,9 @@
           <label for="Opinion" >Opinion</label><br>
           <%= f.text_area :body, class:"form-control"  %>
         </div>
+        <div class="mb-3" id="star-rate-<%= @book.id %>">
+          <%= render'books/star',book:@book %>
+        </div>
          <%= f.submit "Update Book", class: 'btn btn-success'%>
       <% end %>
       <div class="d-flex flex-row mt-3">
