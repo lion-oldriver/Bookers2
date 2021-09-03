@@ -14,6 +14,8 @@
             <th scope="col"></th>
             <th scope="col">Title</th>
             <th scope="col">Opinion</th>
+            <th scope="col">Category</th>
+            <th scope="col"></th>
             <th scope="col">comment</th>
             <th scope="col"></th>
           </tr>
@@ -32,6 +34,14 @@
               <% end %>
             </td>
             <td><%= book.body %></td>
+            <td>
+              <%= link_to search_path(:model => "category", :method =>"perfect", :content => book.category) do %>
+                <%= book.category %>
+              <% end %>
+            </td>
+            <td id="favorite_buttons_<%= book.id %>">
+              <%= render "favorites/favorite", book:book %>
+            </td>
             <td>コメント数: <%= book.book_comments.count %></td>
             <td id="star-rate-<%= book.id %>">
               <%= render 'books/star',book:book %>

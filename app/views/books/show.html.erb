@@ -21,6 +21,11 @@
               <% end %>
             </td>
             <td><%= @book.body %></td>
+            <td>
+              <%= link_to search_path(:model => "category", :method =>"perfect", :content => @book.category) do %>
+                <%= @book.category %>
+              <% end %>
+            </td>
             <td id="favorite_buttons_<%= @book.id %>">
               <%= render "favorites/favorite", book:@book %>
             </td>

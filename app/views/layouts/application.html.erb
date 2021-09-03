@@ -41,6 +41,9 @@
                   <i class="fas fa-sign-out-alt"> logout</i>
                 <% end %>
               </li>
+              <li class="nav-item">
+                <%= render 'searches/form' %>
+              </li>
               <% else %>
               <li class="nav-item">
                 <%= link_to root_path,class:'nav-link text-light' do %>
@@ -67,7 +70,6 @@
           </div>
         </div>
       </nav>
-      <div class="mx-auto mt-1" style="width:400px;"><%= render 'searches/form' %></div>
     </header>
     <main class="mt-2">
     <%= yield %>

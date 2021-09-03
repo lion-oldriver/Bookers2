@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-    @book = Book.find(params[:id])
     if @user.id == current_user.id
       render "edit"
     else

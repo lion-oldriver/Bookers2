@@ -1,5 +1,7 @@
 class SearchesController < ApplicationController
   def search
+    @user = User.find(current_user.id)
+    @book = Book.new
     @model = params["model"]
     @method = params["method"]
     @content = params["content"]
@@ -28,6 +30,16 @@ class SearchesController < ApplicationController
         Book.where('title LIKE ?', '%' + content)
       else
         Book.where('title LIKE ?', '%' + content + '%')
+      end
+    elsif model == 'category'
+      if method == 'perfect'
+        Book.where(category: content)
+      elsif method == 'forward_match'
+        Book.where('category LIKE ?', content + '%')
+      elsif method == 'rear_match'
+        Book.where('category LIKE ?', '%' + content)
+      else
+        Book.where('category LIKE ?', '%' + content + '%')
       end
     end
   end
