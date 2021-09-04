@@ -1,8 +1,15 @@
 <% if user_signed_in? %>
   <%= form_tag(search_path, method: :get) do %>
     <%= text_field_tag 'content' %>
-    <%= select_tag 'model', options_for_select({ "User" => "user", "Book" => "book", "Category" => "category" }) %>
-    <%= select_tag 'method', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward_match", "後方一致" => "rear_match", "部分一致" => "partial"}) %>
-    <%= submit_tag '検索' , class:"btn btn-success" %>
+    <div class="btn-group">
+      <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="collapse" data-target="#select-menu" aria-expanded="false" aria-controls="select-menu">
+      設定
+      </button>
+      <div class="collapse" id="select-menu">
+        <%= select_tag 'model', options_for_select({ "User" => "user", "Book" => "book", "Category" => "category" }) %>
+        <%= select_tag 'method', options_for_select({ "完全一致" => "perfect", "前方一致" => "forward_match", "後方一致" => "rear_match", "部分一致" => "partial"}) %>
+      </div>
+    </div>
+    <%= submit_tag '検索' , class:"btn btn-primary" %>
   <% end %>
 <% end %>

@@ -16,9 +16,13 @@
         <div class="form-group">
           <label for="Title">Title</label><br>
           <%= f.text_field :title, class:"form-control mb-3" %>
-        <div class="form-group ">
-          <label for="Opinion" >Opinion</label><br>
+        <div class="form-group">
+          <label for="Opinion">Opinion</label><br>
           <%= f.text_area :body, class:"form-control"  %>
+        </div>
+        <div class="form-group">
+          <label for="Category">Category</label>
+          <%= f.text_field :category, class:"form-control" %>
         </div>
         <div class="mb-3" id="star-rate-<%= @book.id %>">
           <%= render'books/star',book:@book %>
