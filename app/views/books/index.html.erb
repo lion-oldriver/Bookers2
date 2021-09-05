@@ -18,8 +18,9 @@
 
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
-      <%= link_to '新しい順', books_path(sort_update: 'latest') %> |
-      <%= link_to '評価の高い順', books_path(sort_update: 'rated') %>
+      <%= link_to '新しい順', books_path(sort: 'latest') %> |
+      <%= link_to '評価の高い順', books_path(sort: 'rated') %> |
+      <%= link_to '週間いいねランキング', books_path(sort: 'favorite') %>
       <table class="table">
         <thead>
           <tr>
@@ -49,9 +50,7 @@
               <%= book.body %>
             </td>
             <td class="col-1">
-              <%= link_to search_path(:model => "category", :method =>"perfect", :content => book.category) do %>
-                <%= book.category %>
-              <% end %>
+              <%= link_to book.category, search_path(:model => "category", :method =>"perfect", :content => book.category)  %>
             </td>
             <td  id="favorite_buttons_<%= book.id %>">
               <%= render 'favorites/favorite', book: book %>
