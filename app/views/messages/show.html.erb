@@ -1,0 +1,18 @@
+<div class="container">
+  <h2 id="room" data-room="<%= @room.id %>" data-user="<%= current_user.id %>"><%= @user.name %>さんとのチャット</h2>
+  <div class="row">
+    <div id="message" class="col-8 mx-auto">
+      <% @messages.each do |message| %>
+        <% if message.user_id == current_user.id %>
+          <p style="text-align: left;"><%= message.message %></p>
+        <% else %>
+          <p style="text-align: right;"><%= message.message %></p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+  <%= form_with model: @message do |f| %>
+    <%= f.text_field :message %>
+    <%= f.hidden_field :room_id %>
+  <% end %>
+</div>

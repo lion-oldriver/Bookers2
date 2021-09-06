@@ -1,0 +1,5 @@
+<% unless user.id == current_user.id %>
+  <% if (current_user.following? user) && (user.following? current_user)  %>
+    <%= link_to 'チャットへ', message_path(user.id) %>
+  <% end %>
+<% end %>
