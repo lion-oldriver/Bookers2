@@ -19,6 +19,8 @@ class BooksController < ApplicationController
       @books = Book.rated
     elsif params[:sort] == 'favorite'
       @books = Book.last_week
+    elsif params[:sort] == 'views'
+      @books = Book.views
     else
       @books = Book.all
     end
@@ -29,6 +31,7 @@ class BooksController < ApplicationController
     @books = Book.new
     @book_comment = BookComment.new
     @user = User.find(@book.user_id)
+    impressionist(@book, nil, unique: [:ip_address])
   end
 
   def edit

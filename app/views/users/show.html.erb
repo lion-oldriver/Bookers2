@@ -18,7 +18,7 @@
             <th scope="col">Opinion</th>
             <th scope="col">Category</th>
             <th scope="col"></th>
-            <th scope="col">comment</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -44,7 +44,10 @@
             <td id="favorite_buttons_<%= book.id %>">
               <%= render "favorites/favorite", book:book %>
             </td>
-            <td>コメント数: <%= book.book_comments.count %></td>
+            <td>
+              コメント数: <%= book.book_comments.count %><br />
+              閲覧数: <%= book.impressions_count %>
+            </td>
             <td id="star-rate-<%= book.id %>">
               <%= render 'books/star',book:book %>
             </td>

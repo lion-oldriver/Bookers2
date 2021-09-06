@@ -21,7 +21,8 @@
       <h2>Books</h2>
       <%= link_to '新しい順', books_path(sort: 'latest') %> |
       <%= link_to '評価の高い順', books_path(sort: 'rated') %> |
-      <%= link_to '週間いいねランキング', books_path(sort: 'favorite') %>
+      <%= link_to '週間いいねランキング', books_path(sort: 'favorite') %> |
+      <%= link_to '閲覧数が多い順', books_path(sort: 'views') %>
       <table class="table">
         <thead>
           <tr>
@@ -30,7 +31,7 @@
             <th scope="col">Opinion</th>
             <th scope="col">Category</th>
             <th scope="col"></th>
-            <th scope="col">Comment</th>
+            <th scope="col"></th>
             <th scope="col"></th>
           </tr>
         </thead>
@@ -57,7 +58,8 @@
               <%= render 'favorites/favorite', book: book %>
             </td>
             <td class="col-3">
-              コメント数: <%= book.book_comments.count %>
+              コメント数: <%= book.book_comments.count %><br />
+              閲覧数: <%= book.impressions_count %>
             </td>
             <td class="col-4" id="star-rate-<%= book.id %>">
               <%= render 'books/star',book:book %>

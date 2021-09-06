@@ -31,7 +31,8 @@
               <%= render "favorites/favorite", book:@book %>
             </td>
             <td id="comment_count_<% @book.id %>">
-              コメント数: <%= @book.book_comments.count %>
+              コメント数: <%= @book.book_comments.count %><br />
+              閲覧数: <%= @book.impressions_count %>
             </td>
             <td id="star-rate-<%= @book.id %>">
               <%= render'books/star',book:@book %>

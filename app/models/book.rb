@@ -6,6 +6,7 @@ class Book < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   validates :body, length: { maximum: 200 }
+  is_impressionable counter_cache: true
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
@@ -16,4 +17,5 @@ class Book < ApplicationRecord
   end
   scope :latest, -> { order(id: :desc) }
   scope :rated, -> { order(rate: :desc) }
+  scope :views, -> { order(impressions_count: :desc) }
 end
