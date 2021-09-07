@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @day_ratio = @today_books.count / @yesterday_books.count.to_f
     @this_week_books = @books.created_this_week
     @last_week_books = @books.created_last_week
-    #@week_ratio = @this_week_books.count / @last_week_books.count.to_f
+    @week_ratio = @this_week_books.count / @last_week_books.count.to_f
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id

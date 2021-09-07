@@ -67,7 +67,13 @@
         <tbody>
           <td><%= @today_books.count %></td>
           <td><%= @yesterday_books.count %></td>
-          <td><%= (@day_ratio * 100).round.to_s + '%' %></td>
+          <td>
+            <% begin %>
+              <%= (@day_ratio * 100).round.to_s + '%' %>
+            <% rescue %>
+              <%= 0.to_s + '%' %>
+            <% end %>
+          </td>
         </tbody>
       </table>
       <table class="table table-bordered">
@@ -81,7 +87,13 @@
         <tbody>
           <td><%= @this_week_books.count %></td>
           <td><%= @last_week_books.count %></td>
-          <!--<td> %= (@week_ratio * 100 ).round.to_s + '%' %></td>-->
+          <td>
+            <% begin %>
+              <%= (@week_ratio * 100 ).round.to_s + '%' %>
+            <% rescue %>
+              <%= 0.to_s + '%' %>
+            <% end %>
+          </td>
         </tbody>
       </table>
     </div>
