@@ -6,8 +6,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    @book = Book.new
     @user = User.find(params[:id])
+    @book = Book.new
+    @books = @user.books
+    @today_books = @books.created_today
+    @yesterday_books = @books.created_yesterday
+    @day_ratio = @today_books.count / @yesterday_books.count.to_f
+    @this_week_books = @books.created_this_week
+    @last_week_books = @books.created_last_week
+    #@week_ratio = @this_week_books.count / @last_week_books.count.to_f
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)
     unless @user.id == current_user.id
