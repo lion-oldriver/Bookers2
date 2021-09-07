@@ -24,6 +24,10 @@ class BooksController < ApplicationController
     else
       @books = Book.all
     end
+    @chartbooks = Book.all
+    @books_by_day = @chartbooks.group_by_day(:created_at, last: 7).size
+    @chartlabels = @books_by_day.map(&:first).to_json.html_safe
+    @chartdatas = @books_by_day.map(&:second)
   end
 
   def show

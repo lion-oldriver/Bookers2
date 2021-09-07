@@ -18,8 +18,8 @@ class Book < ApplicationRecord
   scope :latest, -> { order(id: :desc) }
   scope :rated, -> { order(rate: :desc) }
   scope :views, -> { order(impressions_count: :desc) }
-  scope :created_today, -> { where(created_at: Time.current.beginning_of_day..Time.current) }
-  scope :created_yesterday, -> { where(created_at: 1.day.ago.beginning_of_day..1.days.ago.end_of_day) }
-  scope :created_this_week, -> { where(created_at: 6.days.ago.beginning_of_day..Time.current) }
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
+  scope :created_yesterday, -> { where(created_at: 1.day.ago.all_day) }
+  scope :created_this_week, -> { where(created_at: 6.days.ago.beginning_of_day..Time.zone.now) }
   scope :created_last_week, -> { where(created_at: 13.days.ago.beginning_of_day..7.days.ago.end_of_day) }
 end

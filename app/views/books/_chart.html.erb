@@ -1,0 +1,27 @@
+<canvas id="myChart" width="550" height="300"> </canvas>
+
+<script>
+  var ctx = document.getElementById("myChart").getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: <%= @chartlabels %>,
+      datasets: [{
+        label: "投稿した本の数",
+        data: <%= @chartdatas %>,
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        borderColor: 'rgba(20, 20, 200, 1.0)',
+      }]
+    },
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            suggestedMax: 10,
+            stepSize: 1
+          }
+        }]
+      },
+    }
+  });
+</script>
