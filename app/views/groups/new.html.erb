@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-5 px-5 px-sm-0 mx-auto">
+      <h2>Create Group</h2>
+      <div class="text-danger">
+      <% if @group.errors.any? %>
+        <h3><%= pluralize(@group.errors.count,"error") %> prohibited this obj from being saved:</h3>
+        <ul>
+          <% @group.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      </div>
+
+      <%= form_with model: @group, local: true do |f| %>
+        <div class="form-group">
+          <label>グループ名</label>
+          <%= f.text_field :name, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <label>紹介文</label>
+          <%= f.text_area :introduction, class:"form-control" %>
+        </div>
+        <div class="form-group">
+          <label>グループ画像</label>
+          <%= f.attachment_field :image, class:"form-control-file" %>
+        </div>
+        <%= f.submit "Creat Group", class:"btn btn-sm btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
