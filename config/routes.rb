@@ -8,11 +8,16 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
     get 'search' => "users#search"
   end
+
   resources :books do
     resource :favorites, only: [:create, :destroy]
     resources :book_comments, only: [:create, :destroy]
   end
+
   resources :messages, only: [:show, :create]
-  resources :groups, only: [:new, :index, :show, :edit, :create, :update]
+
+  resources :groups do
+    get 'join' => 'groups#join', as: 'join'
+  end
   get 'search', to: 'searches#search'
 end

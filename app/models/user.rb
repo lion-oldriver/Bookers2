@@ -14,7 +14,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :user
   has_many :entries, dependent: :destroy
   has_many :messages, dependent: :destroy
-  has_many :group_users, dependent: :destroy
+  has_many :group_users
   has_many :groups, through: :group_users
 
   validates :name, length: { in: 2..20 }
