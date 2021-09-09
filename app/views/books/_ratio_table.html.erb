@@ -19,23 +19,23 @@
       </td>
     </tbody>
   </table>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th>今週の投稿数</th>
-            <th>前週の投稿数</th>
-            <th>前週比</th>
-          </tr>
-        </thead>
-        <tbody>
-          <td><%= @this_week_books.count %></td>
-          <td><%= @last_week_books.count %></td>
-          <td>
-            <% begin %>
-              <%= (@week_ratio * 100 ).round.to_s + '%' %>
-            <% rescue %>
-              <%= 0.to_s + '%' %>
-            <% end %>
-          </td>
-        </tbody>
-      </table>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>今週の投稿数</th>
+        <th>前週の投稿数</th>
+        <th>前週比</th>
+      </tr>
+    </thead>
+    <tbody>
+      <td><%= @this_week_books.count %></td>
+      <td><%= @last_week_books.count %></td>
+      <td>
+        <% begin %>
+          <%= (@week_ratio * 100 ).round.to_s + '%' %>
+        <% rescue %>
+          <%= 0.to_s + '%' %>
+        <% end %>
+      </td>
+    </tbody>
+  </table>

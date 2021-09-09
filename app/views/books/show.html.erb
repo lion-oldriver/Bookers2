@@ -5,7 +5,7 @@
       <%= render'users/list',user:@user %>
       <%= render'books/new_book',book:@book %>
     </div>
-    
+
     <div class="col-md-8 offset-md-1">
       <h2>Book detail</h2>
       <table class="table">
@@ -18,15 +18,11 @@
               <% end %>
             </td>
             <td>
-              <%= link_to book_path(@book) do %>
-                <%= @book.title %>
-              <% end %>
+              <%= link_to @book.title, book_path(@book) %>
             </td>
             <td><%= @book.body %></td>
             <td>
-              <%= link_to search_path(:model => "category", :method =>"perfect", :content => @book.category) do %>
-                <%= @book.category %>
-              <% end %>
+              <%= link_to @book.category, search_path(:model => "category", :method =>"perfect", :content => @book.category) %>
             </td>
             <td id="favorite_buttons_<%= @book.id %>">
               <%= render "favorites/favorite", book:@book %>
@@ -36,19 +32,19 @@
               閲覧数: <%= @book.impressions_count %>
             </td>
             <td id="star-rate-<%= @book.id %>">
-              <%= render'books/star',book:@book %>
+              <%= render'books/star', book:@book %>
             </td>
             <% if @book.user == current_user %>
-              <td><%= link_to "Edit",edit_book_path(@book), class: 'btn btn-success' %></td>
-              <td><%= link_to "Destroy",book_path(@book),method: :delete, class: 'btn btn-danger'  %></td>
+              <td><%= link_to "Edit", edit_book_path(@book), class: 'btn btn-success' %></td>
+              <td><%= link_to "Destroy", book_path(@book), method: :delete, class: 'btn btn-danger' %></td>
             <% end %>
           </tr>
         </tbody>
       </table>
-      <div id='comment_index'><%= render "book_comments/comment",book:@book %></div>
+      <div id='comment_index'><%= render "book_comments/comment", book:@book %></div>
       <div>
         <%= form_with model:[@book,@book_comment] do |f| %>
-          <%= f.text_area :comment,class:"form-control" %>
+          <%= f.text_area :comment, class:"form-control" %>
           <%= f.submit "送信" %>
         <% end %>
       </div>

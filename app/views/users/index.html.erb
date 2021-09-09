@@ -1,38 +1,48 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-       <%= render'users/list',user:current_user %>
-       <%= render'books/new_book',book:@book %>
+      <%= render'users/list', user:current_user %>
+      <%= render'books/new_book', book:@book %>
     </div>
 
     <div class="col-md-8 offset-md-1">
-       <h2>Users</h2>
-       <%= link_to 'グループを作成する', new_group_path %> |
-       <%= link_to 'グループ一覧', groups_path %>
-       <table class="table">
-         <thead>
-           <tr>
-             <th scope="col">image</th>
-             <th scope="col">name</th>
-             <th scope="col"></th>
-             <th scope="col"></th>
-             <th scope="col"></th>
-             <th scope="col"></th>
-           </tr>
-         </thead>
-         <tbody>
-           <% @users.each do |user| %>
-           <tr>
-             <th scope="row"><%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %></th>
-             <th class="col-2"><%= user.name %></th>
-             <th class="col-3">フォロー数: <%= user.followings.count %></th>
-             <th class="col-3">フォロワー数: <%= user.followers.count %></th>
-             <th class="col-3"><%= render'users/follow',user:user %></th>
-             <th><%= link_to "Show",user_path(user.id) %></th>
-           </tr>
-           <% end %>
-         </tbody>
-       </table>
+      <h2>Users</h2>
+      <%= link_to 'グループを作成する', new_group_path %> |
+      <%= link_to 'グループ一覧', groups_path %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>image</th>
+            <th>name</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td>
+              <%= attachment_image_tag user, :profile_image, :fill, 40, 40, format: 'jpeg', fallback: "no_image.jpg", size:'40x40' %>
+            </td>
+            <td class="col-2"><%= user.name %></td>
+            <td class="col-3">
+              フォロー数: <%= user.followings.count %>
+            </td>
+            <td class="col-3">
+              フォロワー数: <%= user.followers.count %>
+            </td>
+            <td class="col-3">
+              <%= render'users/follow', user:user %>
+            </td>
+            <td>
+              <%= link_to "Show", user_path(user.id) %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

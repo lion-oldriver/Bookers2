@@ -15,15 +15,15 @@
 
       <%= form_with model: @group, local: true do |f| %>
         <div class="form-group">
-          <label>グループ名</label>
+          <%= f.label :グループ名 %>
           <%= f.text_field :name, class:"form-control" %>
         </div>
         <div class="form-group">
-          <label>紹介文</label>
+          <%= f.label :紹介文 %>
           <%= f.text_area :introduction, class:"form-control" %>
         </div>
         <div class="form-group">
-          <label>グループ画像</label>
+          <%= f.label :グループ画像 %>
           <%= f.attachment_field :image, class:"form-control-file" %>
         </div>
         <%= f.submit "Creat Group", class:"btn btn-sm btn-primary" %>
