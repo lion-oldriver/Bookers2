@@ -113,6 +113,9 @@ GEM
       sassc (>= 1.11)
     globalid (0.5.2)
       activesupport (>= 5.0)
+    gretel (4.3.0)
+      actionview (>= 5.1, < 7.0)
+      railties (>= 5.1, < 7.0)
     groupdate (5.2.2)
       activesupport (>= 5)
     http-accept (1.7.0)
@@ -326,6 +329,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   font-awesome-sass (~> 5.13)
+  gretel
   groupdate
   impressionist (~> 1.6.1)
   jbuilder (~> 2.5)

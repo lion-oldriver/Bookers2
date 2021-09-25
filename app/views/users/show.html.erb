@@ -1,6 +1,7 @@
 <p class="notice text-success m-0"><%= notice %></p>
 <div class="container">
   <div class="row">
+    <% breadcrumb :user_show, @user %>
     <div class="col-md-3">
       <%= render 'users/list', user:@user %>
       <%= render 'users/chat', user:@user %>

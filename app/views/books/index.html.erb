@@ -1,4 +1,5 @@
 <div class="container">
+  <% breadcrumb :books_index %>
   <% object = session[:error_message] %>
   <% if !object.nil? %>
     <div class="text-danger">

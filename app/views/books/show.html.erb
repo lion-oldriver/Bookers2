@@ -1,5 +1,6 @@
-<p class="notice text-success m-0"><%= notice %></p>
 <div class="container">
+  <% breadcrumb :book_show, @book %>
+  <p class="notice text-success m-0"><%= notice %></p>
   <div class="row">
     <div class="col-md-3">
       <%= render'users/list',user:@user %>
